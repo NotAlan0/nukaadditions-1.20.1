@@ -18,7 +18,7 @@ license="${mod_license}"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="nuka_additions_mod" #mandatory
+modId="nukaadditions" #mandatory
 # The version number of the mod
 version="${mod_version}" #mandatory
 # A display name for the mod
@@ -44,7 +44,7 @@ authors="${mod_authors}" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''${mod_description}'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.nuka_additions_mod]] #optional
+[[dependencies.nukaadditions]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -58,7 +58,7 @@ description='''${mod_description}'''
     # Side this dependency is applied on - BOTH, CLIENT, or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.nuka_additions_mod]]
+[[dependencies.nukaadditions]]
     modId="minecraft"
     mandatory=true
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
@@ -71,3 +71,32 @@ description='''${mod_description}'''
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+
+# Fusion as a required dependency
+[[dependencies.nukaadditions]]
+modId="fusion"
+mandatory=true
+versionRange=">=1.2.7b"
+ordering="NONE"
+side="CLIENT"
+# Add a dependency on NukaCraft
+[[dependencies.nukaadditions]]
+modId="nukacraft"
+mandatory=true
+versionRange=">=1.16.2"
+ordering="NONE"
+side="BOTH"
+# Add a dependency on SuperMartijn642's Core Lib
+[[dependencies.nukaadditions]]
+modId="supermartijn642corelib"
+mandatory=true
+versionRange=">=1.1.17 <1.2.0"
+ordering="NONE"
+side="BOTH"
+# Add a dependency on Rechiseled
+[[dependencies.nukaadditions]]
+modId="rechiseled"
+mandatory=true
+versionRange=">=1.1.1"
+ordering="NONE"
+side="BOTH"
