@@ -12,7 +12,12 @@
     - ...
   * In-progress
     - Rechiseled block variants
+    - Minecolonies Styles
+       - Vault Style
   * To-do
-    - Minecolonies styles
+    - Minecolonies Styles
+       - BOS Style
+       - Raider Style
+       - NCR Style?
     - Structures
     - Recipes
