@@ -1,6 +1,11 @@
 {
-  "parent": "block/cube_all",
+  "loader": "fusion:model",
+  "type": "connecting",
+  "parent": "minecraft:block/cube_all",
   "textures": {
     "all": "nukaadditions:block/shelterfloor_connecting"
+  },
+  "connections": {
+    "type": "is_same_block"
   }
 }
