@@ -22,7 +22,7 @@ public class ModBlocks
             DeferredRegister.create(ForgeRegistries.BLOCKS, NukaAdditionsMod.MOD_ID);
 
     //region Blocks
-    public static final RegistryObject<Block> SHELTERFLOOR_CONNECTING = registryBlock("mora_block",
+    public static final RegistryObject<Block> SHELTERFLOOR_CONNECTING = registryBlock("shelterfloor_connecting",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
     //endregion
