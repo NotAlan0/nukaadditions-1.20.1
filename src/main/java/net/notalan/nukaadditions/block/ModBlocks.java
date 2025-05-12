@@ -1,5 +1,6 @@
 package net.notalan.nukaadditions.block;
 
+import com.nukateam.nukacraft.NukaCraft;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,8 @@ public class ModBlocks
 
     //region Blocks
     public static final RegistryObject<Block> SHELTERFLOOR_CONNECTING = registryBlock("shelterfloor_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> WHITESTEEL_CONNECTING = registryBlock("whitesteel_connecting",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
     //endregion

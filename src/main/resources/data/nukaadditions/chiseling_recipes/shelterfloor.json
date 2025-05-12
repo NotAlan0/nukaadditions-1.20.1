@@ -1,0 +1,9 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "connecting_item": "nukaadditions:shelterfloor_connecting",
+      "item": "nukacraft:shelterfloor"
+    }
+  ]
+}

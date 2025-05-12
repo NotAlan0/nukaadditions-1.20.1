@@ -20,6 +20,7 @@ public class ModCreativeModeTabs
                     .title(Component.translatable("creativetab.nukaadditions_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.SHELTERFLOOR_CONNECTING.get());
+                        pOutput.accept(ModBlocks.WHITESTEEL_CONNECTING.get());
                     })
                     .build());
 
