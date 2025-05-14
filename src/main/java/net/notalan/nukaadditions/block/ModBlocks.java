@@ -24,9 +24,17 @@ public class ModBlocks
 
     //region Blocks
     public static final RegistryObject<Block> SHELTERFLOOR_CONNECTING = registryBlock("shelterfloor_connecting",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> WHITESTEEL_CONNECTING = registryBlock("whitesteel_connecting",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> STEEL_COLUMN = registryBlock("steel_column",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> STEEL_PLATING = registryBlock("steel_plating",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> WHITESTEEL_COLUMN_CONNECTING = registryBlock("whitesteel_column_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> STEEL_PANEL = registryBlock("steel_panel",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
     //endregion
 

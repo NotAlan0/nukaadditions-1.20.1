@@ -1,5 +1,10 @@
 {
   "values": [
-    "nukaadditions:shelterfloor_connecting"
+    "nukaadditions:shelterfloor_connecting",
+    "nukaadditions:steel_column",
+    "nukaadditions:steel_plating",
+    "nukaadditions:whitesteel_connecting",
+    "nukaadditions:whitesteel_column_connecting",
+    "nukaadditions:steel_panel"
   ]
 }

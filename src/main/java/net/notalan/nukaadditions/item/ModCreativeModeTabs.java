@@ -21,6 +21,10 @@ public class ModCreativeModeTabs
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.SHELTERFLOOR_CONNECTING.get());
                         pOutput.accept(ModBlocks.WHITESTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.STEEL_COLUMN.get());
+                        pOutput.accept(ModBlocks.STEEL_PLATING.get());
+                        pOutput.accept(ModBlocks.WHITESTEEL_COLUMN_CONNECTING.get());
+                        pOutput.accept(ModBlocks.STEEL_PANEL.get());
                     })
                     .build());
 

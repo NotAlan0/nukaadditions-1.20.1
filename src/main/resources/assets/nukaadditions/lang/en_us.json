@@ -1,6 +1,10 @@
 {
   "block.nukaadditions.shelterfloor_connecting": "Shelter Floor Connecting",
   "block.nukaadditions.whitesteel_connecting": "White Steel Connecting",
+  "block.nukaadditions.steel_column": "Steel Column",
+  "block.nukaadditions.steel_plating": "Steel Plating",
+  "block.nukaadditions.whitesteel_column_connecting": "White Steel Column Connecting",
+  "block.nukaadditions.steel_panel": "Steel Panel",
 
   "creativetab.nukaadditions_tab": "Nuka Additions"
 }
