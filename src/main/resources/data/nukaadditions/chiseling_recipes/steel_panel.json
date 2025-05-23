@@ -2,10 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
+      "item": "nukaadditions:steel_panel"
+    },
+    {
       "item": "nukaadditions:steel_plating"
     },
     {
       "item": "nukaadditions:steel_column"
     }
-  ]
+  ],
+  "overwrite": false
 }

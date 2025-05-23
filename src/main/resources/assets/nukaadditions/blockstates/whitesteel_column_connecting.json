@@ -1,5 +1,16 @@
 {
   "variants": {
-    "": { "model": "nukaadditions:block/whitesteel_column_connecting" }
+    "axis=x": {
+      "model": "nukaadditions:block/whitesteel_column_connecting",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "nukaadditions:block/whitesteel_column_connecting"
+    },
+    "axis=z": {
+      "model": "nukaadditions:block/whitesteel_column_connecting",
+      "x": 90
+    }
   }
 }

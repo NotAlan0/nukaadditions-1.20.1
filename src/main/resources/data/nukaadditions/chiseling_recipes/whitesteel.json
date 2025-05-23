@@ -4,6 +4,10 @@
     {
       "connecting_item": "nukaadditions:whitesteel_connecting",
       "item": "nukacraft:whitesteel"
+    },
+    {
+      "connecting_item": "nukaadditions:whitesteel_column_connecting",
+      "item": "nukacraft:whitesteel_column"
     }
   ],
   "overwrite": false

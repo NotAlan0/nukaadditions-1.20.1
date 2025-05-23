@@ -5,5 +5,6 @@
       "connecting_item": "nukaadditions:shelterfloor_connecting",
       "item": "nukacraft:shelterfloor"
     }
-  ]
+  ],
+  "overwrite": false
 }

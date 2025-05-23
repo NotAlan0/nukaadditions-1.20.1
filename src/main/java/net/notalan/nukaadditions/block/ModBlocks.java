@@ -4,9 +4,7 @@ import com.nukateam.nukacraft.NukaCraft;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -28,13 +26,17 @@ public class ModBlocks
     public static final RegistryObject<Block> WHITESTEEL_CONNECTING = registryBlock("whitesteel_connecting",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> STEEL_COLUMN = registryBlock("steel_column",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> STEEL_PLATING = registryBlock("steel_plating",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> WHITESTEEL_COLUMN_CONNECTING = registryBlock("whitesteel_column_connecting",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> STEEL_PANEL = registryBlock("steel_panel",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SHELTERFLOOR_STAIRS = registryBlock("shelterfloor_stairs",
+            () -> new StairBlock(SHELTERFLOOR_CONNECTING.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SHELTERFLOOR_SLAB = registryBlock("shelterfloor_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
     //endregion
 

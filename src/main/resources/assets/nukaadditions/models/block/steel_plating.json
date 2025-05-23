@@ -1,9 +1,10 @@
 {
   "loader": "fusion:model",
   "type": "connecting",
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "nukaadditions:block/steel_plating"
+    "end": "nukaadditions:block/steel_panel",
+    "side": "nukaadditions:block/steel_plating"
   },
   "connections": {
     "type": "is_same_block"

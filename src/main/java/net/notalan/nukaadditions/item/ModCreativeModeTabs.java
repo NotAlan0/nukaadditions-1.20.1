@@ -25,6 +25,8 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModBlocks.STEEL_PLATING.get());
                         pOutput.accept(ModBlocks.WHITESTEEL_COLUMN_CONNECTING.get());
                         pOutput.accept(ModBlocks.STEEL_PANEL.get());
+                        pOutput.accept(ModBlocks.SHELTERFLOOR_STAIRS.get());
+                        pOutput.accept(ModBlocks.SHELTERFLOOR_SLAB.get());
                     })
                     .build());
 
