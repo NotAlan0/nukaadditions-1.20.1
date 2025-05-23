@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "nukaadditions:block/shelterfloor_slab"
+    },
+    "type=double": {
+      "model": "nukaadditions:block/shelterfloor_connecting"
+    },
+    "type=top": {
+      "model": "nukaadditions:block/shelterfloor_slab_top"
+    }
+  }
+}
