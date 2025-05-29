@@ -14,10 +14,31 @@
     - Rechiseled block variants
     - Minecolonies Styles
        - Vault Style
+    - Custom Origins
+       - Human 
+       - Ghoul
+       - Super Mutant
+       - Synth
   * To-do
     - Minecolonies Styles
        - BOS Style
        - Raider Style
+       - Wasteland Style
        - NCR Style?
     - Structures
+    - Custom Classes/Factions
+       - Vault Dweller
+       - BoS
+       - Enclave
+       - NCR
+       - Raider
+       - The Unity/Master's Army
+       - Necropolis
+       - Institute
+       - Cultists
+       - Lone Wanderer/Settler
+       - Legion
+       - Railroad
+       - Minutemen
+    - SPECIAL Skill Tree
     - Recipes
