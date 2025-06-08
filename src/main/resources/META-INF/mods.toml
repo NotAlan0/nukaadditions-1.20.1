@@ -35,39 +35,40 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
 # Add a dependency on SuperMartijn642's Config Lib
-#[[dependencies.${mod_id}]]
-#modId="supermartijn642corelib"
-#mandatory=true
-#versionRange="${core_library_version}"
-#ordering="NONE"
-#side="BOTH"
+[[dependencies.${mod_id}]]
+modId="supermartijn642corelib"
+mandatory=true
+versionRange="${core_library_version}"
+ordering="NONE"
+side="BOTH"
 # Add a dependency on SuperMartijn642's Config Lib
-#[[dependencies.${mod_id}]]
-#modId="supermartijn642configlib"
-#mandatory=true
-#versionRange="${config_library_version}"
-#ordering="NONE"
-#side="BOTH"
+[[dependencies.${mod_id}]]
+modId="supermartijn642configlib"
+mandatory=true
+versionRange="${config_library_version}"
+ordering="NONE"
+side="BOTH"
 # Add a dependency on Fusion
-#[[dependencies.${mod_id}]]
-#modId="fusion"
-#mandatory=true
-#versionRange="${fusion_version}"
-#ordering="NONE"
-#side="CLIENT"
+[[dependencies.${mod_id}]]
+modId="fusion"
+mandatory=true
+versionRange="${fusion_version}"
+ordering="NONE"
+side="CLIENT"
 # Add a dependency on Rechiseled
-#[[dependencies.${mod_id}]]
-#modId="rechiseled"
-#mandatory=true
-#versionRange="${rechiseled_version}"
-#ordering="NONE"
-#side="BOTH"
+[[dependencies.${mod_id}]]
+modId="rechiseled"
+mandatory=true
+versionRange="${rechiseled_version}"
+ordering="NONE"
+side="BOTH"
 
 # Add a dependency on NukaCraft
-#[[dependencies.${mod_id}]]
-#modId="nukacraft"
-#mandatory=true
-#versionRange="${nukacraft_version}"
-#ordering="NONE"
-#side="BOTH"
+[[dependencies.${mod_id}]]
+modId="nukacraft"
+mandatory=true
+versionRange="${nukacraft_version}"
+ordering="NONE"
+side="BOTH"

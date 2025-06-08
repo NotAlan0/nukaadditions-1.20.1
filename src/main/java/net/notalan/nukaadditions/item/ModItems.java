@@ -1,11 +1,19 @@
 package net.notalan.nukaadditions.item;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.BannerPatternItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.notalan.nukaadditions.NukaAdditionsMod;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.entity.BannerPattern;
+import java.util.function.Supplier;
 
 public class ModItems
 {

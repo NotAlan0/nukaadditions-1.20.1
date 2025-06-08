@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "nukaadditions:block/asphalt_edge",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "nukaadditions:block/asphalt_edge"
+    },
+    "axis=z": {
+      "model": "nukaadditions:block/asphalt_edge",
+      "x": 90
+    }
+  }
+}
