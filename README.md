@@ -19,13 +19,6 @@
        - Ghoul
        - Super Mutant
        - Synth
-  * To-do
-    - Minecolonies Styles
-       - BOS Style
-       - Raider Style
-       - Wasteland Style
-       - NCR Style?
-    - Structures
     - Custom Classes/Factions
        - Vault Dweller
        - BoS
@@ -40,5 +33,12 @@
        - Legion
        - Railroad
        - Minutemen
+  * To-do
+    - Minecolonies Styles
+       - BOS Style
+       - Raider Style
+       - Wasteland Style
+       - NCR Style?
+    - Structures
     - SPECIAL Skill Tree
     - Recipes
