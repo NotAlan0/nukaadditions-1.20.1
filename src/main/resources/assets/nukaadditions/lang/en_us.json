@@ -1,12 +1,27 @@
 {
-  "block.nukaadditions.shelterfloor_connecting": "Shelter Floor Connecting",
-  "block.nukaadditions.whitesteel_connecting": "White Steel Connecting",
+  "rechiseled.tooltip.connecting": "Connecting",
+  "block.nukaadditions.shelterfloor_connecting": "Shelter Floor",
+  "block.nukaadditions.whitesteel_connecting": "White Steel",
   "block.nukaadditions.steel_column": "Steel Column",
   "block.nukaadditions.steel_plating": "Steel Plating",
-  "block.nukaadditions.whitesteel_column_connecting": "White Steel Column Connecting",
+  "block.nukaadditions.whitesteel_column_connecting": "White Steel Column",
   "block.nukaadditions.steel_panel": "Steel Panel",
+  "block.nukaadditions.rad_stone": "Rad Stone",
+  "block.nukaadditions.asphalt": "Asphalt",
+  "block.nukaadditions.asphalt_center": "Asphalt Center",
+  "block.nukaadditions.asphalt_edge": "Asphalt Edge",
+  "block.nukaadditions.blacksteel_column": "Black Steel Column",
+  "block.nukaadditions.reinforced_concrete_connecting": "Reinforced Concrete",
+  "block.nukaadditions.reinforced_panel": "Reinforced Panel",
+  "block.nukaadditions.reinforced_column": "Reinforced Column",
+  "block.nukaadditions.reinforced_floor": "Reinforced Floor",
+  "block.nukaadditions.redsteel_connecting": "Red Steel",
+  "block.nukaadditions.bluesteel_connecting": "Blue Steel",
+
   "block.nukaadditions.shelterfloor_stairs": "Shelter Floor Stairs",
   "block.nukaadditions.shelterfloor_slab": "Shelter Floor Slab",
+  "item.nukaadditions.vt_banner_pattern": "Banner Pattern",
+  "item.nukaadditions.vt_banner_pattern.desc": "Vault-Tec",
 
   "creativetab.nukaadditions_tab": "Nuka Additions"
 }

@@ -1,0 +1,19 @@
+{
+  "type": "fusion:connecting",
+  "parent": "minecraft:block/cube",
+  "connections": [
+    {
+      "type": "fusion:is_same_state"
+    }
+  ],
+  "loader": "fusion:model",
+  "textures": {
+    "down": "nukacraft:block/blacksteel",
+    "east": "nukaadditions:block/blacksteel_column",
+    "north": "nukaadditions:block/blacksteel_column",
+    "particle": "nukaadditions:block/blacksteel_column",
+    "south": "nukaadditions:block/blacksteel_column",
+    "up": "nukacraft:block/blacksteel",
+    "west": "nukaadditions:block/blacksteel_column"
+  }
+}

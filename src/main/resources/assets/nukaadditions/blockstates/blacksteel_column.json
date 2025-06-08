@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "nukaadditions:block/blacksteel_column",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "nukaadditions:block/blacksteel_column"
+    },
+    "axis=z": {
+      "model": "nukaadditions:block/blacksteel_column",
+      "x": 90
+    }
+  }
+}

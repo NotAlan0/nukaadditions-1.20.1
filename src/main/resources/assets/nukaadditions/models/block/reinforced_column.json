@@ -1,0 +1,12 @@
+{
+  "loader": "fusion:model",
+  "type": "connecting",
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "nukaadditions:block/reinforced_concrete_connecting",
+    "side": "nukaadditions:block/reinforced_column"
+  },
+  "connections": {
+    "type": "is_same_block"
+  }
+}

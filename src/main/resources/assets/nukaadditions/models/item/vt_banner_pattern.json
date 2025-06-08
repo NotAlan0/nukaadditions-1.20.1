@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nukaadditions:item/vt_banner_pattern"
+  }
+}

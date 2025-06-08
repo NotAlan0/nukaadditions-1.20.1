@@ -1,0 +1,19 @@
+{
+  "type": "fusion:connecting",
+  "parent": "minecraft:block/cube",
+  "connections": [
+    {
+      "type": "fusion:is_same_state"
+    }
+  ],
+  "loader": "fusion:model",
+  "textures": {
+    "down": "nukaadditions:block/asphalt",
+    "east": "nukaadditions:block/asphalt_center",
+    "north": "nukaadditions:block/asphalt_center",
+    "particle": "nukaadditions:block/asphalt_center",
+    "south": "nukaadditions:block/asphalt_center",
+    "up": "nukaadditions:block/asphalt",
+    "west": "nukaadditions:block/asphalt_center"
+  }
+}

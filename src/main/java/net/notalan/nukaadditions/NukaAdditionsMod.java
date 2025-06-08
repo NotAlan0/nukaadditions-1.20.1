@@ -1,7 +1,12 @@
 package net.notalan.nukaadditions;
 
 import com.mojang.logging.LogUtils;
+import com.nukateam.nukacraft.common.registery.PatternTagsRegistry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.BannerPatternItem;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -14,6 +19,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.notalan.nukaadditions.block.ModBlocks;
+import net.notalan.nukaadditions.item.ModBannerPatterns;
 import net.notalan.nukaadditions.item.ModCreativeModeTabs;
 import net.notalan.nukaadditions.item.ModItems;
 import org.slf4j.Logger;
@@ -35,6 +41,7 @@ public class NukaAdditionsMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBannerPatterns.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
