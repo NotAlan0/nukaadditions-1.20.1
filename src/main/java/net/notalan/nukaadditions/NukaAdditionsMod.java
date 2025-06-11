@@ -1,12 +1,19 @@
 package net.notalan.nukaadditions;
 
 import com.mojang.logging.LogUtils;
+import com.nukateam.nukacraft.common.foundation.blocks.blocks.RadioactiveBlock;
 import com.nukateam.nukacraft.common.registery.PatternTagsRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BannerPatternItem;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BannerPattern;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -80,6 +87,16 @@ public class NukaAdditionsMod
     public void onServerStarting(ServerStartingEvent event)
     {
 
+    }
+
+    @SubscribeEvent
+    public static void onCommonSetup(FMLCommonSetupEvent event)
+    {
+        event.enqueueWork(() -> {
+            Block newBlock = new RadioactiveBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE).lightLevel((state) -> 5), 0.1f);
+
+            Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("nukacraft", "raw_uranium_block"), newBlock);
+        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
