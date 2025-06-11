@@ -60,6 +60,16 @@ public class ModBlocks
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> BLUESTEEL_CONNECTING = registryBlock("bluesteel_connecting",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> BLACKSTEEL_CONNECTING = registryBlock("blacksteel_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> YELLOWSTEEL_CONNECTING = registryBlock("yellowsteel_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> GREENSTEEL_CONNECTING = registryBlock("greensteel_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> RUSTED_REDSTEEL_CONNECTING = registryBlock("rusted_redsteel_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> RUSTED_GREENSTEEL_CONNECTING = registryBlock("rusted_greensteel_connecting",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
     //endregion
 

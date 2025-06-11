@@ -4,7 +4,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id "net.minecraftforge.gradle" version "6.0.25"
-    //id "org.spongepowered.mixin" version "0.7.+" apply true
+    id "org.spongepowered.mixin" version "0.7.+"
 }
 
 version = mod_version
@@ -27,21 +27,14 @@ repositories {
     maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://repo.spongepowered.org/maven" }
     maven { url = "https://modmaven.dev/" } // Registrate
-    /*
-    exclusiveContent {
-        forRepository {
-            maven { url = "https://api.modrinth.com/maven" }
-        }
-        filter { includeGroup "maven.modrinth" }
-    }
-    maven { url = "https://repo.spongepowered.org/maven" }
-
-     */
 }
 
 dependencies {
     // Forge
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Mixin
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     // Core library
     implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:${core_library_file}")
@@ -129,6 +122,12 @@ minecraft {
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
+}
+
+mixin {
+    add sourceSets.main, "nukaadditions.refmap.json"
+
+    config "nukaadditions.mixin.json"
 }
 
 gradle.taskGraph.whenReady {

@@ -39,6 +39,11 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModBlocks.REINFORCED_FLOOR.get());
                         pOutput.accept(ModBlocks.REDSTEEL_CONNECTING.get());
                         pOutput.accept(ModBlocks.BLUESTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.GREENSTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.BLACKSTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.RUSTED_GREENSTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.RUSTED_REDSTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.YELLOWSTEEL_CONNECTING.get());
                     })
                     .build());
 

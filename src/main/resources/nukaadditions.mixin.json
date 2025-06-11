@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "net.notalan.nukaadditions.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "nukaadditions.refmap.json",
+  "mixins":
+  [
+    "ModBlocksMixin",
+    "ModBlocksAccessor",
+    "RareTickMixin"
+  ],
+  "client":
+  [
+
+  ],
+  "minVersion": "0.8"
+}

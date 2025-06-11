@@ -1,0 +1,11 @@
+{
+  "loader": "fusion:model",
+  "type": "connecting",
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "nukaadditions:block/greensteel_connecting"
+  },
+  "connections": {
+    "type": "is_same_block"
+  }
+}
