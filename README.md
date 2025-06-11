@@ -2,23 +2,25 @@
  Adds a bunch of stuff that i thought was necessary for the mod to work in its current state and also stuff i wanted for my modpack
   * Includes:
     * Rechiseled block variants
-    * More structures with more loot and previously unobtainable items
-    * New recipes to blocks lacking said recipes
+    * More lootable and explorable structures, including major locations from Fallout
+    * New/modified recipes to blocks lacking said recipes for a better survival experience
     * Minecolonies style cariants for a vault, raider outpost, and BOS outpost
+    * SPECIAL skill tree and perks
+    * Custom Origins based on Fallout species and factions
     * Other stuff, idk
 
 ## Roadmap
   * Done
-    - ...
-  * In-progress
     - Rechiseled block variants
-    - Minecolonies Styles
-       - Vault Style
     - Custom Origins
        - Human 
        - Ghoul
        - Super Mutant
        - Synth
+  * In-progress
+    - SPECIAL Skill Tree
+    - Minecolonies Styles
+       - Vault Style
     - Custom Classes/Factions
        - Vault Dweller
        - BoS
@@ -40,5 +42,4 @@
        - Wasteland Style
        - NCR Style?
     - Structures
-    - SPECIAL Skill Tree
     - Recipes
