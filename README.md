@@ -11,6 +11,8 @@
 
 ## Roadmap
   * Done
+    - Ores
+    - Biomes
     - Rechiseled block variants
     - Custom Origins
        - Human 
