@@ -72,3 +72,11 @@ mandatory=true
 versionRange="${nukacraft_version}"
 ordering="NONE"
 side="BOTH"
+
+# Add a dependency on TerraBlender
+[[dependencies.${mod_id}]]
+modId="terrablender"
+mandatory=true
+versionRange="${terrablender_version}"
+ordering="NONE"
+side="BOTH"
