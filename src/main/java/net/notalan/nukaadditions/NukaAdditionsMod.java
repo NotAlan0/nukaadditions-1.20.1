@@ -2,15 +2,11 @@ package net.notalan.nukaadditions;
 
 import com.mojang.logging.LogUtils;
 import com.nukateam.nukacraft.common.foundation.blocks.blocks.RadioactiveBlock;
-import com.nukateam.nukacraft.common.registery.PatternTagsRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BannerPatternItem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -29,7 +25,13 @@ import net.notalan.nukaadditions.block.ModBlocks;
 import net.notalan.nukaadditions.item.ModBannerPatterns;
 import net.notalan.nukaadditions.item.ModCreativeModeTabs;
 import net.notalan.nukaadditions.item.ModItems;
+import net.notalan.nukaadditions.worldgen.biome.TestRegion1;
+import net.notalan.nukaadditions.worldgen.biome.TestRegion2;
+import net.notalan.nukaadditions.worldgen.biome.surface.ModSurfaceRules;
+import net.notalan.nukaadditions.worldgen.biome.ModTerrablender;
 import org.slf4j.Logger;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(NukaAdditionsMod.MOD_ID)
@@ -37,6 +39,7 @@ public class NukaAdditionsMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "nukaadditions";
+
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -49,6 +52,8 @@ public class NukaAdditionsMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBannerPatterns.register(modEventBus);
+
+        ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -65,7 +70,13 @@ public class NukaAdditionsMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() ->
+        {
+            //Regions.register(new TestRegion1(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 2));
+            //Regions.register(new TestRegion2(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_2"), 2));
 
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
+        });
     }
 
     // Add the example block item to the building blocks tab
