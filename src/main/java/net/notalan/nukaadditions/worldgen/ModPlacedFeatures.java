@@ -132,7 +132,7 @@ public class ModPlacedFeatures {
 
         //region Trees
         register(context, DEWDROP_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DEWDROP_TREE_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3,0.1f,1)));
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1,0.1f,1)));
         register(context, ASH_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ASH_TREE_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1F, 1)));
         register(context, GLOW_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GLOW_TREE_KEY),
@@ -201,13 +201,15 @@ public class ModPlacedFeatures {
         //region Stuff
         register(context, SCRAP_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SCRAP_KEY),
                 ImmutableList.of(CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
         register(context, DISK_ASHSTONE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ASHSTONE_KEY),
                 ImmutableList.of(CountPlacement.of(1), RarityFilter.onAverageOnceEvery(4),InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
         register(context, DISK_ASHDIRT_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ASHDIRT_KEY),
                 ImmutableList.of(CountPlacement.of(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, LAKE_ACID_SURFACE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAKE_ACID_KEY),
-                ImmutableList.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
+        register(context, LAKE_ACID_SURFACE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAKE_ACID_KEY),
+                ImmutableList.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         //endregion
     }
 

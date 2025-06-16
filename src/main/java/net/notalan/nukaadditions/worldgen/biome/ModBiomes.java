@@ -1,13 +1,18 @@
 package net.notalan.nukaadditions.worldgen.biome;
 
 import com.nukateam.nukacraft.common.foundation.world.BiomeSettings;
+import com.nukateam.nukacraft.common.foundation.world.features.ModDefaultFeatures;
+import com.nukateam.nukacraft.common.foundation.world.features.placed.BiomePlacements;
+import com.nukateam.nukacraft.common.foundation.world.features.placed.ModVegetationPlacements;
 import com.nukateam.nukacraft.common.registery.entities.ModMobs;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -29,6 +34,10 @@ public class ModBiomes {
     //public static final ResourceKey<Biome> TEST_BIOME = register("test_biome");
     public static final ResourceKey<Biome> CRANBERRY_BOG = register("cranberry_bog");
     public static final ResourceKey<Biome> POISON_VALLEY = register("poison_valley");
+    public static final ResourceKey<Biome> SAVAGE_DIVIDE = register("savage_divide");
+    public static final ResourceKey<Biome> GLOW_SEA = register("glow_sea");
+    public static final ResourceKey<Biome> ASH_HEAP = register("ash_heap");
+    public static final ResourceKey<Biome> WASTED_DESERT = register("wasted_desert");
     private static final HashMap<ResourceKey<Biome>, BiomeSettings> biomeSettings = new HashMap();
 
     private static ResourceKey<Biome> register(String name)
@@ -41,11 +50,19 @@ public class ModBiomes {
         HolderGetter<ConfiguredWorldCarver<?>> worldCarvers = context.lookup(Registries.CONFIGURED_CARVER);
         context.register(CRANBERRY_BOG, cranberryBog(placedFeatures, worldCarvers));
         context.register(POISON_VALLEY, poisonValley(placedFeatures, worldCarvers));
+        context.register(SAVAGE_DIVIDE, savageDivide(placedFeatures, worldCarvers));
+        context.register(GLOW_SEA, glowSea(placedFeatures, worldCarvers));
+        context.register(ASH_HEAP, ashHeap(placedFeatures, worldCarvers));
+        context.register(WASTED_DESERT, wastedDesert(placedFeatures, worldCarvers));
     }
 
     public static void setupBiomeSettings() {
         biomeSettings.put(CRANBERRY_BOG, (new BiomeSettings()).setFogDensity(1.0F));
         biomeSettings.put(POISON_VALLEY, (new BiomeSettings()).setFogDensity(1.0F));
+        biomeSettings.put(SAVAGE_DIVIDE, (new BiomeSettings()).setFogDensity(1.0f));
+        biomeSettings.put(ASH_HEAP, (new BiomeSettings()).setFogDensity(0.5F));
+        biomeSettings.put(GLOW_SEA, (new BiomeSettings()).setFogDensity(0.05F));
+        biomeSettings.put(WASTED_DESERT, (new BiomeSettings().setFogDensity(0.05F)));
     }
 
     @Nullable
@@ -59,8 +76,7 @@ public class ModBiomes {
         return null;
     }
 
-    private static void addFeature(BiomeGenerationSettings.Builder builder, GenerationStep.Decoration step, ResourceKey<PlacedFeature> feature)
-    {
+    private static void addFeature(BiomeGenerationSettings.Builder builder, GenerationStep.Decoration step, ResourceKey<PlacedFeature> feature) {
         builder.addFeature(step, feature);
     }
 
@@ -76,9 +92,13 @@ public class ModBiomes {
     private static Biome cranberryBog(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         // Mobs
         MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
-        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 5, 4, 20));
-        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 5, 4, 20));
-        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 5, 4, 10));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
 
         BiomeDefaultFeatures.farmAnimals(mobBuilder);
         BiomeDefaultFeatures.commonSpawns(mobBuilder);
@@ -134,9 +154,13 @@ public class ModBiomes {
     private static Biome poisonValley(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         // Mobs
         MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
-        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 5, 4, 20));
-        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 5, 4, 20));
-        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 5, 4, 10));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
 
         BiomeDefaultFeatures.farmAnimals(mobBuilder);
         BiomeDefaultFeatures.commonSpawns(mobBuilder);
@@ -158,6 +182,7 @@ public class ModBiomes {
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_ASTER_PLANT_PLACED_KEY);
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_THISTLE_PLANT_PLACED_KEY);
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_DEAD_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_MUTTFRUIT_BUSH_PLACED_KEY);
 
         //Stuff
         addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
@@ -181,4 +206,232 @@ public class ModBiomes {
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
                 .build();
     }
+
+    private static Biome savageDivide(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+
+        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.commonSpawns(mobBuilder);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+
+        //Tree
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.IMMORTAL_TREE_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.RUSTY_TREE_PLACED_KEY);
+
+        //Plants
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_COMMON_BERRY_BUSH1_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_COMMON_BERRY_BUSH2_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_COMMON_BERRY_BUSH3_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.STRANGE_GRASS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_MUTTFRUIT_BUSH_PLACED_KEY);
+        BiomeDefaultFeatures.addBadlandGrass(biomeBuilder);
+        BiomeDefaultFeatures.addTaigaGrass(biomeBuilder);
+        BiomeDefaultFeatures.addSavannaExtraGrass(biomeBuilder);
+        BiomeDefaultFeatures.addMossyStoneBlock(biomeBuilder);
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.7F)
+                .downfall(0.4F)
+                .mobSpawnSettings(mobBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(-10990522)
+                        .waterColor(-11386816)
+                        .waterFogColor(-11386816)
+                        .skyColor(16246715)
+                        .foliageColorOverride(12563018)
+                        .grassColorOverride(12563018)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
+
+    private static Biome glowSea(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+
+        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.commonSpawns(mobBuilder);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+
+        //Tree
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GLOW_TREE_PLACED_KEY);
+
+        //Plants
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GRASS_ASH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GLOW_GRASS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_BOMB_BERRY_BUSH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_RADROSE_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_FUSION_FRUIT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_MEGA_HATTER_PLACED_KEY);
+
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.5F)
+                .downfall(0.9F)
+                .mobSpawnSettings(mobBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(16766566)
+                        .waterColor(3882546)
+                        .waterFogColor(2308637)
+                        .skyColor(16246715)
+                        .foliageColorOverride(9076070)
+                        .grassColorOverride(9076070)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
+
+    private static Biome ashHeap(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+
+        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.commonSpawns(mobBuilder);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        addFeature(biomeBuilder, GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.DISK_ASHDIRT_PLACED_KEY);
+
+        //Tree
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HEAP_TREE_PLACED_KEY);
+
+        //Plants
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GRASS_ASH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HEAP_GRASS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.RUSTY_BUSH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_ZANDER_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_CRACKBERRY_BUSH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_SOOT_FLOWER_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_FIRE_FUNGI_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_GLOW_FUNGUS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_STARLIGHT_BERRY_PLACED_KEY);
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.2F)
+                .downfall(0.5F)
+                .mobSpawnSettings(mobBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(-10990522)
+                        .waterColor(-9551310)
+                        .waterFogColor(11648455)
+                        .skyColor(-10990522)
+                        .foliageColorOverride(-10465466)
+                        .grassColorOverride(-11187642)
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.0219F))
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
+
+    private static Biome wastedDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+
+        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.commonSpawns(mobBuilder);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+
+        //Tree
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HEAP_TREE_PLACED_KEY);
+
+        //Plants
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ASH_GRASS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.RUSTY_BUSH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_DEAD_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_HOLLYHOCK_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_CRACKBERRY_BUSH_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_BROC_PLANT_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_MUTTFRUIT_BUSH_PLACED_KEY);
+        BiomeDefaultFeatures.addBadlandGrass(biomeBuilder);
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DISK_ASHSTONE_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1F)
+                .downfall(0.5F)
+                .generationSettings(biomeBuilder.build())
+                .mobSpawnSettings(mobBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(14668703)
+                        .waterColor(11972266)
+                        .waterFogColor(6447206)
+                        .skyColor(10855336)
+                        .foliageColorOverride(8941887)
+                        .grassColorOverride(13150826)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
+
 }

@@ -289,7 +289,6 @@ public class ModConfiguredFeatures {
         register(context, LAKE_ACID_KEY, Feature.LAKE, new LakeFeature.Configuration(
                 BlockStateProvider.simple((ModFluids.ACID_FLUID.get()).defaultFluidState().createLegacyBlock()),
                 BlockStateProvider.simple((ModBlocks.ACID_DIRT.get()).defaultBlockState())));
-
         //endregion
     }
 
