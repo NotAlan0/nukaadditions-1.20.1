@@ -38,6 +38,7 @@ public class ModBiomes {
     public static final ResourceKey<Biome> GLOW_SEA = register("glow_sea");
     public static final ResourceKey<Biome> ASH_HEAP = register("ash_heap");
     public static final ResourceKey<Biome> WASTED_DESERT = register("wasted_desert");
+    public static final ResourceKey<Biome> CITY_WASTES = register("city_wastes");
     private static final HashMap<ResourceKey<Biome>, BiomeSettings> biomeSettings = new HashMap();
 
     private static ResourceKey<Biome> register(String name)
@@ -54,6 +55,7 @@ public class ModBiomes {
         context.register(GLOW_SEA, glowSea(placedFeatures, worldCarvers));
         context.register(ASH_HEAP, ashHeap(placedFeatures, worldCarvers));
         context.register(WASTED_DESERT, wastedDesert(placedFeatures, worldCarvers));
+        context.register(CITY_WASTES, cityWastes(placedFeatures, worldCarvers));
     }
 
     public static void setupBiomeSettings() {
@@ -63,6 +65,7 @@ public class ModBiomes {
         biomeSettings.put(ASH_HEAP, (new BiomeSettings()).setFogDensity(0.5F));
         biomeSettings.put(GLOW_SEA, (new BiomeSettings()).setFogDensity(0.05F));
         biomeSettings.put(WASTED_DESERT, (new BiomeSettings().setFogDensity(0.05F)));
+        biomeSettings.put(CITY_WASTES, (new BiomeSettings().setFogDensity(0.5f)));
     }
 
     @Nullable
@@ -410,11 +413,15 @@ public class ModBiomes {
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_CRACKBERRY_BUSH_PLACED_KEY);
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_BROC_PLANT_PLACED_KEY);
         addFeature(biomeBuilder, GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_MUTTFRUIT_BUSH_PLACED_KEY);
-        BiomeDefaultFeatures.addBadlandGrass(biomeBuilder);
+        BiomeDefaultFeatures.addDesertVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
 
         //Stuff
         addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
         addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DISK_ASHSTONE_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.GRASS_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.COARSE_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.MUD_PLACED_KEY);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -428,10 +435,61 @@ public class ModBiomes {
                         .waterFogColor(6447206)
                         .skyColor(10855336)
                         .foliageColorOverride(8941887)
-                        .grassColorOverride(13150826)
+                        .grassColorOverride(15645038)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
                 .build();
     }
+
+    private static Biome cityWastes(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+
+        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.commonSpawns(mobBuilder);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+
+        //Tree
+
+        //Plants
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+        //addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.CRATER_PLACED_KEY);
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DEBRIS_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.2F)
+                .downfall(0.5F)
+                .mobSpawnSettings(mobBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(-10990522)
+                        .waterColor(-9551310)
+                        .waterFogColor(11648455)
+                        .skyColor(-10990522)
+                        .foliageColorOverride(-10465466)
+                        .grassColorOverride(-11187642)
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.0219F))
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
+
 
 }

@@ -1,0 +1,10 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "connecting_item": "nukaadditions:greensteel_connecting",
+      "item": "nukacraft:greensteel"
+    }
+  ],
+  "overwrite": false
+}

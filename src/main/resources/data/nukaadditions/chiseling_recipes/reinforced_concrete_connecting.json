@@ -1,0 +1,18 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "item": "nukaadditions:reinforced_concrete_connecting"
+    },
+    {
+      "item": "nukaadditions:reinforced_panel"
+    },
+    {
+      "item": "nukaadditions:reinforced_column"
+    },
+    {
+      "item": "nukaadditions:reinforced_floor"
+    }
+  ],
+  "overwrite": false
+}

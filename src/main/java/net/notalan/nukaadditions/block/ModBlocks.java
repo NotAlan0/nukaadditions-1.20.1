@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.notalan.nukaadditions.NukaAdditionsMod;
+import net.notalan.nukaadditions.block.custom.ScrappingBenchBlock;
 import net.notalan.nukaadditions.item.ModItems;
 
 import java.util.function.Supplier;
@@ -70,6 +71,9 @@ public class ModBlocks
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> RUSTED_GREENSTEEL_CONNECTING = registryBlock("rusted_greensteel_connecting",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+
+    public static final RegistryObject<Block> SCRAP_BENCH = registryBlock("scrap_bench",
+            () -> new ScrappingBenchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
     //endregion
 

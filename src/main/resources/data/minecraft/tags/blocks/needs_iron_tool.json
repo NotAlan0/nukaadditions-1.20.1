@@ -5,6 +5,18 @@
     "nukaadditions:steel_plating",
     "nukaadditions:whitesteel_connecting",
     "nukaadditions:whitesteel_column_connecting",
-    "nukaadditions:steel_panel"
+    "nukaadditions:steel_panel",
+    "nukaadditions:blacksteel_column",
+    "nukaadditions:reinforced_concrete_connecting",
+    "nukaadditions:reinforced_panel",
+    "nukaadditions:reinforced_column",
+    "nukaadditions:reinforced_floor",
+    "nukaadditions:redsteel_connecting",
+    "nukaadditions:bluesteel_connecting",
+    "nukaadditions:blacksteel_connecting",
+    "nukaadditions:greensteel_connecting",
+    "nukaadditions:yellowsteel_connecting",
+    "nukaadditions:shelterfloor_stairs",
+    "nukaadditions:shelterfloor_slab"
   ]
 }

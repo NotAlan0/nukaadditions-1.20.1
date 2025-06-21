@@ -94,6 +94,13 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DISK_ASHSTONE_PLACED_KEY = registerKey("disk_ashstone_placed");
     public static final ResourceKey<PlacedFeature> DISK_ASHDIRT_PLACED_KEY = registerKey("disk_ashdirt_placed");
     public static final ResourceKey<PlacedFeature> LAKE_ACID_SURFACE_PLACED_KEY = registerKey("lake_acid_surface_placed");
+
+    public static final ResourceKey<PlacedFeature> MUD_PLACED_KEY = registerKey("mud_placed");
+    public static final ResourceKey<PlacedFeature> GRASS_PLACED_KEY = registerKey("grass_placed");
+    public static final ResourceKey<PlacedFeature> COARSE_PLACED_KEY = registerKey("coarse_placed");
+
+    public static final ResourceKey<PlacedFeature> CRATER_PLACED_KEY = registerKey("crater_placed");
+    public static final ResourceKey<PlacedFeature> DEBRIS_PLACED_KEY = registerKey("debris_placed");
     //endregion
 
     public static void bootstrap(BootstapContext<PlacedFeature> context)
@@ -210,6 +217,21 @@ public class ModPlacedFeatures {
 
         register(context, LAKE_ACID_SURFACE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAKE_ACID_KEY),
                 ImmutableList.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+
+        register(context, MUD_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PACKED_MUD_KEY),
+                ImmutableList.of(CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
+        register(context, GRASS_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GRASS_BLOCK_KEY),
+                ImmutableList.of(CountPlacement.of(2), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
+        register(context, COARSE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.COARSE_DIRT_KEY),
+                ImmutableList.of(CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
+        //register(context, CRATER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CRATER_KEY),
+        //        ImmutableList.of(CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
+        register(context, DEBRIS_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DEBRIS_KEY),
+                ImmutableList.of(CountPlacement.of(2), RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         //endregion
     }
 
