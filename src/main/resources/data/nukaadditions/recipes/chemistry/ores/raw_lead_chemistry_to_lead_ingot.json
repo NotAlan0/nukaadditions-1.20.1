@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:raw_lead"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:lead", "count": 2
+  }
+}

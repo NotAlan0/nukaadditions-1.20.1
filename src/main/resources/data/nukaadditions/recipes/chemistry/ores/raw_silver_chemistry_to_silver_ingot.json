@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:raw_silver"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:silver", "count": 2
+  }
+}

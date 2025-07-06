@@ -1,0 +1,13 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:metal_chest"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:screws", "count": 1, "weight": 1},
+    { "item": "nukacraft:steel", "count": 2, "weight": 1},
+    { "item": "minecraft:iron_ingot", "count": 2,  "weight": 2}
+  ]
+}

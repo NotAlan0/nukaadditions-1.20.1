@@ -1,0 +1,18 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:tesla_rifle"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:weapon_parts", "count": 1, "weight": 1},
+    { "item": "nukacraft:adncan", "count": 1, "weight": 1},
+    { "item": "nukacraft:screws", "count": 2,  "weight": 3},
+    { "item": "nukacraft:spring", "count": 1,  "weight": 3},
+    { "item": "nukacraft:plastic", "count": 1,  "weight": 3},
+    { "item": "nukacraft:copperwires", "count": 2,  "weight": 3},
+    { "item": "nukacraft:aluminium_nugget", "count": 3,  "weight": 6},
+    { "item": "nukacraft:scrap", "count": 2,  "weight": 6}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:wild_tato"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:antisept", "count": 1
+  }
+}

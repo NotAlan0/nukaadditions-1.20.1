@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:raw_alumi"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:alumi_ingot", "count": 2
+  }
+}

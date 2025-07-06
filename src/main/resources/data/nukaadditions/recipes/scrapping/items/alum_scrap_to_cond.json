@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:alumi_ingot"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:alumicond", "count": 1, "weight": 1}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:lead"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:leadplate", "count": 2, "weight": 1}
+  ]
+}

@@ -8,7 +8,6 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.notalan.nukaadditions.NukaAdditionsMod;
-import net.notalan.nukaadditions.item.ModItems;
 
 public class ModItemModelGenerator extends ItemModelProvider {
     public ModItemModelGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {

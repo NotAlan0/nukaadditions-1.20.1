@@ -12,6 +12,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.notalan.nukaadditions.NukaAdditionsMod;
+import net.notalan.nukaadditions.block.custom.ChemBenchBlock;
+import net.notalan.nukaadditions.block.custom.ChemBenchSide;
 import net.notalan.nukaadditions.block.custom.ScrappingBenchBlock;
 import net.notalan.nukaadditions.item.ModItems;
 
@@ -40,7 +42,7 @@ public class ModBlocks
     public static final RegistryObject<Block> SHELTERFLOOR_SLAB = registryBlock("shelterfloor_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> RAD_STONE = registryBlock("rad_stone",
-            () -> new RadioactiveBlock(BlockBehaviour.Properties.copy(Blocks.STONE), 0.1f));
+            () -> new RadioactiveBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noLootTable(), 0.1f));
     public static final RegistryObject<Block> ASPHALT = registryBlock("asphalt",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
     public static final RegistryObject<Block> ASPHALT_CENTER = registryBlock("asphalt_center",
@@ -74,6 +76,11 @@ public class ModBlocks
 
     public static final RegistryObject<Block> SCRAP_BENCH = registryBlock("scrap_bench",
             () -> new ScrappingBenchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> CHEM_BENCH = registryBlock("chem_bench",
+            () -> new ChemBenchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> CHEM_BENCH_SIDE = registryBlock("chem_bench_side",
+            () -> new ChemBenchSide(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().noParticlesOnBreak().strength(1.5F)));
+
 
     //endregion
 

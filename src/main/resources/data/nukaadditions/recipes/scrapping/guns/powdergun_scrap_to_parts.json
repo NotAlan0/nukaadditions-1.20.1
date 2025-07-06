@@ -1,0 +1,19 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:powdergun"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:weapon_parts", "count": 1, "weight": 1},
+    { "item": "nukacraft:screws", "count": 2,  "weight": 3},
+    { "item": "nukacraft:deadwood_planks", "count": 2,  "weight": 3},
+    { "item": "nukacraft:cranberry_planks", "count": 2,  "weight": 3},
+    { "item": "minecraft:oak_planks", "count": 2,  "weight": 3},
+    { "item": "minecraft:spruce_planks", "count": 2,  "weight": 3},
+    { "item": "minecraft:dark_oak_planks", "count": 2,  "weight": 3},
+    { "item": "nukacraft:gears", "count": 2,  "weight": 3},
+    { "item": "nukacraft:scrap", "count": 2,  "weight": 5}
+  ]
+}

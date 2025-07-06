@@ -44,6 +44,8 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModBlocks.RUSTED_GREENSTEEL_CONNECTING.get());
                         pOutput.accept(ModBlocks.RUSTED_REDSTEEL_CONNECTING.get());
                         pOutput.accept(ModBlocks.YELLOWSTEEL_CONNECTING.get());
+                        pOutput.accept(ModBlocks.SCRAP_BENCH.get());
+                        pOutput.accept(ModBlocks.CHEM_BENCH.get());
                     })
                     .build());
 

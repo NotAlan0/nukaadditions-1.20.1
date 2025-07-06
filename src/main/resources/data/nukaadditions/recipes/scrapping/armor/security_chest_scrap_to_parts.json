@@ -1,0 +1,14 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:vault_security_chest"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:composite", "count": 1, "weight": 1},
+    { "item": "minecraft:black_dye", "count": 1, "weight": 1},
+    { "item": "nukacraft:cerplate", "count": 2, "weight": 1},
+    { "item": "nukacraft:textile", "count": 2,  "weight": 2}
+  ]
+}

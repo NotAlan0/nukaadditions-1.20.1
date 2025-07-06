@@ -1,0 +1,16 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:robot_chest"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:alumicond", "count": 1, "weight": 1},
+    { "item": "minecraft:screws", "count": 2, "weight": 1},
+    { "item": "nukacraft:optofiber", "count": 1, "weight": 2},
+    { "item": "nukacraft:plastic", "count": 3, "weight": 3},
+    { "item": "nukacraft:copperwires", "count": 2,  "weight": 3},
+    { "item": "nukacraft:steel", "count": 2,  "weight": 3}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:classic_laser_pistol"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:redstone", "count": 2,  "weight": 1},
+    { "item": "minecraft:gold_nugget", "count": 3,  "weight": 2},
+    { "item": "nukacraft:plastic", "count": 1,  "weight": 3},
+    { "item": "nukacraft:screws", "count": 2,  "weight": 3},
+    { "item": "nukacraft:copperwires", "count": 2,  "weight": 3},
+    { "item": "nukacraft:aluminium_nugget", "count": 3,  "weight": 6},
+    { "item": "nukacraft:scrap", "count": 2,  "weight": 6}
+  ]
+}

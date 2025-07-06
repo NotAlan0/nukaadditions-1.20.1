@@ -3,6 +3,7 @@ package net.notalan.nukaadditions.worldgen;
 import com.google.common.collect.ImmutableList;
 import com.nukateam.nukacraft.common.foundation.blocks.SlagSludgeBlock;
 import com.nukateam.nukacraft.common.foundation.world.treedecorator.DewdropDecorator;
+import com.nukateam.nukacraft.common.foundation.world.treedecorator.ResinDecorator;
 import com.nukateam.nukacraft.common.foundation.world.treedecorator.SapDecorator;
 import com.nukateam.nukacraft.common.registery.blocks.ModBlocks;
 import com.nukateam.nukacraft.common.registery.blocks.PlantBlocks;
@@ -221,7 +222,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.EVERGREEN_LEAVES.get()),
                 new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)),
 
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines()
+                new TwoLayersFeatureSize(2, 0, 2)).decorators(ImmutableList.of(new ResinDecorator(0.1f))).ignoreVines()
                 .build());
 
         register(context, RUSTY_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -230,7 +231,8 @@ public class ModConfiguredFeatures {
 
                 BlockStateProvider.simple(ModBlocks.RUSTY_LEAVES.get()),
                 new SpruceFoliagePlacer(UniformInt.of(2, 4), UniformInt.of(0, 2), UniformInt.of(1, 2)),
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines()
+
+                new TwoLayersFeatureSize(2, 0, 2)).decorators(ImmutableList.of(new ResinDecorator(0.1f))).ignoreVines()
                 .build());
         //endregion
 
@@ -288,7 +290,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple((ModBlocks.SCRAP_BLOCK.get()).defaultBlockState()),
                 List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
                 BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
-                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK), UniformInt.of(1, 1), 1));
+                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.COARSE_DIRT), UniformInt.of(1, 1), 1));
 
         register(context, ASHSTONE_KEY, Feature.FOREST_ROCK, new BlockStateConfiguration((ModBlocks.ASHSTONE.get()).defaultBlockState()));
 
@@ -319,12 +321,6 @@ public class ModConfiguredFeatures {
                 List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
                         BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
                 BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(3, 6), 3));
-
-        //register(context, CRATER_KEY, Feature.DISK, new DiskConfiguration(new RuleBasedBlockStateProvider(
-        //        BlockStateProvider.simple((Blocks.AIR).defaultBlockState()),
-        //        List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
-        //                BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
-        //        BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(12, 24), 6));
 
         register(context, DEBRIS_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(40, 10, 1, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
                 new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()

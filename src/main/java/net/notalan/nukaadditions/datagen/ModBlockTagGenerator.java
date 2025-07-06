@@ -44,7 +44,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.ASPHALT_CENTER.get(),
                         ModBlocks.ASPHALT.get(),
                         ModBlocks.ASPHALT_EDGE.get(),
-                        ModBlocks.RAD_STONE.get()
+                        ModBlocks.RAD_STONE.get(),
+                        ModBlocks.SCRAP_BENCH.get(),
+                        ModBlocks.CHEM_BENCH.get(),
+                        ModBlocks.CHEM_BENCH_SIDE.get()
                 );
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
@@ -53,7 +56,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.ASPHALT_CENTER.get(),
                         ModBlocks.ASPHALT.get(),
                         ModBlocks.ASPHALT_EDGE.get(),
-                        ModBlocks.RAD_STONE.get()
+                        ModBlocks.RAD_STONE.get(),
+                        ModBlocks.SCRAP_BENCH.get(),
+                        ModBlocks.CHEM_BENCH.get(),
+                        ModBlocks.CHEM_BENCH_SIDE.get()
                 );
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)

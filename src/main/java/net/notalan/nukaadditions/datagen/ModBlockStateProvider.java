@@ -4,6 +4,7 @@ package net.notalan.nukaadditions.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.notalan.nukaadditions.NukaAdditionsMod;
@@ -17,6 +18,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        /*
         blockWithItem(ModBlocks.ASPHALT);
         blockWithItem(ModBlocks.ASPHALT_CENTER);
         blockWithItem(ModBlocks.ASPHALT_EDGE);
@@ -49,6 +51,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.REINFORCED_PANEL);
 
         blockWithItem(ModBlocks.RAD_STONE);
+
+
+        simpleBlockWithItem(ModBlocks.SCRAP_BENCH.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/scrap_bench")));
+
+        simpleBlockWithItem(ModBlocks.CHEM_BENCH.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/chem_bench")));
+        */
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

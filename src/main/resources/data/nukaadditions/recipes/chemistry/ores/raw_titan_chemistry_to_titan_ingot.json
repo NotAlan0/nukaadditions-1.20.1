@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:raw_black_titan"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:black_titan", "count": 2
+  }
+}

@@ -8,6 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -21,7 +22,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
-    protected ModBlockLootTables() {
+    public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
@@ -60,6 +61,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.REINFORCED_FLOOR.get());
         this.dropSelf(ModBlocks.REINFORCED_CONCRETE_CONNECTING.get());
         this.dropSelf(ModBlocks.REINFORCED_PANEL.get());
+
+        this.dropSelf(ModBlocks.SCRAP_BENCH.get());
+        this.dropSelf(ModBlocks.CHEM_BENCH.get());
+        this.dropOther(ModBlocks.CHEM_BENCH_SIDE.get(), Blocks.AIR);
     }
 
 //    protected LootTable.Builder createCopperOreDrops(Block pBlock, Item item) {
