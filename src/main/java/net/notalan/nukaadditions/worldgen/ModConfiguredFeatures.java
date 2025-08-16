@@ -322,8 +322,9 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
                 BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(3, 6), 3));
 
-        register(context, DEBRIS_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(40, 10, 1, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+        register(context, DEBRIS_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(60, 10, 2, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
                 new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                        .add(ModBlocks.STEEL_BLOCK.get().defaultBlockState(), 3)
                         .add(ModBlocks.WHITE_STEEL.get().defaultBlockState(), 3)
                         .add(ModBlocks.WHITE_STEEL_COLUMN.get().defaultBlockState(), 3)
                         .add(ModBlocks.BLACKSTEEL.get().defaultBlockState(), 3)

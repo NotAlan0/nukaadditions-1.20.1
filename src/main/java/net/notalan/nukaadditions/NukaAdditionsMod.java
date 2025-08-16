@@ -60,7 +60,7 @@ public class NukaAdditionsMod
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
 
-        ModTerrablender.registerBiomes();
+        //ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -77,6 +77,8 @@ public class NukaAdditionsMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(ModTerrablender::registerBiomes);
+
         event.enqueueWork(() ->
         {
             //Regions.register(new TestRegion1(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 2));
@@ -110,11 +112,11 @@ public class NukaAdditionsMod
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event)
     {
-        event.enqueueWork(() -> {
-            Block newBlock = new RadioactiveBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE).lightLevel((state) -> 5), 0.1f);
-
-            Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("nukacraft", "raw_uranium_block"), newBlock);
-        });
+//        event.enqueueWork(() -> {
+//            //Block newBlock = new RadioactiveBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE).lightLevel((state) -> 5), 0.1f);
+//
+//            //Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("nukacraft", "raw_uranium_block"), newBlock);
+//        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

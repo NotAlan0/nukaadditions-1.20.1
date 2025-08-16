@@ -4,18 +4,15 @@ import com.nukateam.nukacraft.common.registery.items.ModFood;
 import com.nukateam.nukacraft.common.registery.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.notalan.nukaadditions.NukaAdditionsMod;
 import net.notalan.nukaadditions.block.ModBlocks;
 
-import java.awt.*;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -31,7 +28,7 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 //        oreBlasting(pWriter, POO_SMELTABLES, RecipeCategory.MISC, ModItems.POO.get(), 0.25f, 100, "poo");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STEEL_PANEL.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STEEL_PANEL.get(), 6)
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', ModItems.STEEL_INGOT.get())
@@ -71,7 +68,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.REDUCER.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET.get())
                 .pattern("SS")
                 .pattern("CR")
                 .define('C', Items.COPPER_INGOT)
@@ -80,7 +77,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.REDUCER.get())
                 .pattern("C")
                 .pattern("S")
                 .pattern("S")
@@ -154,6 +151,185 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('G', Blocks.GRAVEL)
                 .unlockedBy(getHasName(Items.CLAY), has(Items.CLAY))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.PA_STATION.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        //region Blocks
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.STEELFLOOR.get(), 4)
+                .pattern("YAY")
+                .pattern("ASA")
+                .pattern("YAY")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('A', ModItems.ALUMINIUM_INGOT.get())
+                .define('Y', Items.YELLOW_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.POWERBLOCK.get(), 6)
+                .pattern("SSS")
+                .pattern("CCC")
+                .pattern("SSS")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('C', ModItems.COPPER_WIRE.get())
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.BLACKSTEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.BLACK_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.WHITE_STEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.WHITE_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.REDSTEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.RED_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.BLUESTEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.BLUE_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.GREENSTEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.GREEN_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.YELLOW_STEEL.get(), 4)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern(" S ")
+                .define('S', ModItems.STEEL_INGOT.get())
+                .define('B', Items.YELLOW_DYE)
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(pWriter);
+
+        //endregion
+
+        //region Doors
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.VAULT_BLASTDOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.RUSTY_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.CAGE_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.STORE_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.RED_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.GREEN_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.WHITE_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.HARD_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, com.nukateam.nukacraft.common.registery.blocks.ModBlocks.RED_ROCKET_DOOR.get())
+                .pattern("CTC")
+                .pattern("PTP")
+                .pattern("T T")
+                .define('T', ModItems.BLACK_TITAN_INGOT.get())
+                .define('P', ModItems.PLASTIC.get())
+                .define('C', Items.CHAIN)
+                .unlockedBy(getHasName(ModItems.BLACK_TITAN_INGOT.get()), has(ModItems.BLACK_TITAN_INGOT.get()))
+                .save(pWriter);
+
+        //endregion
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {

@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class ScrapBenchBlockEntity extends BlockEntity implements MenuProvider {
-    //private final ItemStackHandler itemHandler = new ItemStackHandler(2);
     private final ItemStackHandler itemHandler = new ItemStackHandler(1 + OUTPUT_SLOTS); // input + multiple outputs
 
     private static final int INPUT_SLOT = 0;

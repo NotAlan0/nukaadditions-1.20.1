@@ -32,6 +32,10 @@ public class TestRegion1 extends Region {
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.DESERT, ModBiomes.WASTED_DESERT);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SAVANNA, ModBiomes.WASTED_DESERT);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.PLAINS, ModBiomes.CITY_WASTES);
+
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.RIVER, ModBiomes.RADS_RIVER);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.OCEAN, ModBiomes.RADS_RIVER);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.LUKEWARM_OCEAN, ModBiomes.RADS_RIVER);
         });
     }
 }

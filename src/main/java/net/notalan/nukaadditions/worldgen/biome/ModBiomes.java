@@ -39,6 +39,7 @@ public class ModBiomes {
     public static final ResourceKey<Biome> ASH_HEAP = register("ash_heap");
     public static final ResourceKey<Biome> WASTED_DESERT = register("wasted_desert");
     public static final ResourceKey<Biome> CITY_WASTES = register("city_wastes");
+    public static final ResourceKey<Biome> RADS_RIVER = register("rads_river");
     private static final HashMap<ResourceKey<Biome>, BiomeSettings> biomeSettings = new HashMap();
 
     private static ResourceKey<Biome> register(String name)
@@ -56,6 +57,7 @@ public class ModBiomes {
         context.register(ASH_HEAP, ashHeap(placedFeatures, worldCarvers));
         context.register(WASTED_DESERT, wastedDesert(placedFeatures, worldCarvers));
         context.register(CITY_WASTES, cityWastes(placedFeatures, worldCarvers));
+        context.register(RADS_RIVER, radsRiver(placedFeatures, worldCarvers));
     }
 
     public static void setupBiomeSettings() {
@@ -491,5 +493,54 @@ public class ModBiomes {
                 .build();
     }
 
+    private static Biome radsRiver(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        // Mobs
+        MobSpawnSettings.Builder mobBuilder = new MobSpawnSettings.Builder();
+//        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.RADROACH.get(), 20, 4, 6));
+//        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.BLOATFLY.get(), 20, 4, 6));
+//        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.ANT.get(), 20, 4, 6));
+//        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.MOLERAT.get(), 20, 4, 6));
+//        mobBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModMobs.DEATHCLAW.get(), 10, 2, 4));
+//        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.BRAHMIN.get(), 20, 2, 4));
+//        mobBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModMobs.RAIDER.get(), 20, 4, 10));
+//
+//        BiomeDefaultFeatures.farmAnimals(mobBuilder);
+        BiomeDefaultFeatures.oceanSpawns(mobBuilder, 3, 4, 15);
+
+        // Features
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        globalOverworldGeneration(biomeBuilder);
+
+        //Ores/Underground
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+
+        //Tree
+        BiomeDefaultFeatures.addWaterTrees(biomeBuilder);
+
+        //Plants
+        BiomeDefaultFeatures.addDefaultSeagrass(biomeBuilder);
+
+        //Stuff
+        addFeature(biomeBuilder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.SCRAP_PLACED_KEY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.2F)
+                .downfall(0.5F)
+                .mobSpawnSettings(mobBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .fogColor(7169882)
+                        .waterColor(7568258)
+                        .waterFogColor(6250861)
+                        .skyColor(8946034)
+                        .foliageColorOverride(-10465466)
+                        .grassColorOverride(-11187642)
+
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)).build())
+                .build();
+    }
 
 }
