@@ -1,0 +1,15 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "item": "nukaadditions:asphalt"
+    },
+    {
+      "item": "nukaadditions:asphalt_center"
+    },
+    {
+      "item": "nukaadditions:asphalt_edge"
+    }
+  ],
+  "overwrite": false
+}

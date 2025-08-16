@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "nukaadditions:block/asphalt" }
+    "": {
+      "model": "nukaadditions:block/asphalt"
+    }
   }
 }

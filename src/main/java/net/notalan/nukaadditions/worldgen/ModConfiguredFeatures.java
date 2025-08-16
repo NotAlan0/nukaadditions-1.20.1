@@ -3,9 +3,9 @@ package net.notalan.nukaadditions.worldgen;
 import com.google.common.collect.ImmutableList;
 import com.nukateam.nukacraft.common.foundation.blocks.SlagSludgeBlock;
 import com.nukateam.nukacraft.common.foundation.world.treedecorator.DewdropDecorator;
+import com.nukateam.nukacraft.common.foundation.world.treedecorator.ResinDecorator;
 import com.nukateam.nukacraft.common.foundation.world.treedecorator.SapDecorator;
 import com.nukateam.nukacraft.common.registery.blocks.ModBlocks;
-import com.nukateam.nukacraft.common.foundation.world.features.configured.OreFeatures;
 import com.nukateam.nukacraft.common.registery.blocks.PlantBlocks;
 import com.nukateam.nukacraft.common.registery.fluid.ModFluids;
 import net.minecraft.core.Direction;
@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.configurations.ReplaceSphereConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -36,9 +37,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockS
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraftforge.common.Tags;
 import net.notalan.nukaadditions.NukaAdditionsMod;
 
 import java.util.List;
@@ -116,14 +118,25 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?,?>> ASHSTONE_KEY = registerKey("ashstone");
     public static final ResourceKey<ConfiguredFeature<?,?>> ASHDIRT_KEY = registerKey("ashdirt");
     public static final ResourceKey<ConfiguredFeature<?,?>> LAKE_ACID_KEY = registerKey("lake_acid");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> PACKED_MUD_KEY = registerKey("packed_mud");
+    public static final ResourceKey<ConfiguredFeature<?,?>> GRASS_BLOCK_KEY = registerKey("grass_block");
+    public static final ResourceKey<ConfiguredFeature<?,?>> COARSE_DIRT_KEY = registerKey("coarse_dirt");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> CRATER_KEY = registerKey("crater");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DEBRIS_KEY = registerKey("debris");
     //endregion
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context)
     {
-        //region Ores
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest sandReplaceable = new BlockMatchTest(Blocks.SAND);
+        RuleTest grassReplaceables = new BlockMatchTest(Blocks.GRASS_BLOCK);
+        RuleTest dirtReplaceables = new BlockMatchTest(Blocks.DIRT);
+        RuleTest craterReplaceables = new BlockMatchTest(Blocks.COARSE_DIRT);
 
+        //region Ores
         List<OreConfiguration.TargetBlockState> overworldUraniumOres = List.of(
                 OreConfiguration.target(stoneReplaceable, ModBlocks.URANIUM_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_URANIUM_ORE.get().defaultBlockState()));
@@ -209,7 +222,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.EVERGREEN_LEAVES.get()),
                 new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)),
 
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines()
+                new TwoLayersFeatureSize(2, 0, 2)).decorators(ImmutableList.of(new ResinDecorator(0.1f))).ignoreVines()
                 .build());
 
         register(context, RUSTY_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -218,7 +231,8 @@ public class ModConfiguredFeatures {
 
                 BlockStateProvider.simple(ModBlocks.RUSTY_LEAVES.get()),
                 new SpruceFoliagePlacer(UniformInt.of(2, 4), UniformInt.of(0, 2), UniformInt.of(1, 2)),
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines()
+
+                new TwoLayersFeatureSize(2, 0, 2)).decorators(ImmutableList.of(new ResinDecorator(0.1f))).ignoreVines()
                 .build());
         //endregion
 
@@ -276,7 +290,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple((ModBlocks.SCRAP_BLOCK.get()).defaultBlockState()),
                 List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
                 BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
-                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK), UniformInt.of(1, 1), 1));
+                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.COARSE_DIRT), UniformInt.of(1, 1), 1));
 
         register(context, ASHSTONE_KEY, Feature.FOREST_ROCK, new BlockStateConfiguration((ModBlocks.ASHSTONE.get()).defaultBlockState()));
 
@@ -289,6 +303,55 @@ public class ModConfiguredFeatures {
         register(context, LAKE_ACID_KEY, Feature.LAKE, new LakeFeature.Configuration(
                 BlockStateProvider.simple((ModFluids.ACID_FLUID.get()).defaultFluidState().createLegacyBlock()),
                 BlockStateProvider.simple((ModBlocks.ACID_DIRT.get()).defaultBlockState())));
+
+        register(context, PACKED_MUD_KEY, Feature.DISK, new DiskConfiguration(new RuleBasedBlockStateProvider(
+                BlockStateProvider.simple((Blocks.PACKED_MUD).defaultBlockState()),
+                List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
+                        BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
+                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(3, 6), 3));
+
+        register(context, GRASS_BLOCK_KEY, Feature.DISK, new DiskConfiguration(new RuleBasedBlockStateProvider(
+                BlockStateProvider.simple((Blocks.GRASS_BLOCK).defaultBlockState()),
+                List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
+                        BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
+                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(3, 6), 2));
+
+        register(context, COARSE_DIRT_KEY, Feature.DISK, new DiskConfiguration(new RuleBasedBlockStateProvider(
+                BlockStateProvider.simple((Blocks.COARSE_DIRT).defaultBlockState()),
+                List.of(new RuleBasedBlockStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.AIR),
+                        BlockStateProvider.simple((ModBlocks.ASH_DIRT.get()).defaultBlockState())))),
+                BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.PACKED_MUD, Blocks.COARSE_DIRT), UniformInt.of(3, 6), 3));
+
+        register(context, DEBRIS_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(60, 10, 2, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                        .add(ModBlocks.STEEL_BLOCK.get().defaultBlockState(), 3)
+                        .add(ModBlocks.WHITE_STEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.WHITE_STEEL_COLUMN.get().defaultBlockState(), 3)
+                        .add(ModBlocks.BLACKSTEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.BLACK_STEEL_SLAB.get().defaultBlockState(), 3)
+                        .add(ModBlocks.BLACKSTEEL_STAIRS.get().defaultBlockState(), 3)
+                        .add(ModBlocks.BLUESTEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.REDSTEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.GREENSTEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.YELLOW_STEEL.get().defaultBlockState(), 3)
+                        .add(ModBlocks.YELLOWSTEEL_COLUMN.get().defaultBlockState(), 3)
+                        .add(ModBlocks.WHITEBRICKS.get().defaultBlockState(), 3)
+                        .add(ModBlocks.CRACKED_WHITE_BRICKS.get().defaultBlockState(), 3)
+                        .add(ModBlocks.WHITEBRICKS_STAIRS.get().defaultBlockState(), 3)
+                        .add(ModBlocks.CRACKED_WHITE_BRICKS_STAIRS.get().defaultBlockState(), 3)
+                        .add(net.notalan.nukaadditions.block.ModBlocks.ASPHALT.get().defaultBlockState(), 3)
+                        .add(net.notalan.nukaadditions.block.ModBlocks.ASPHALT_EDGE.get().defaultBlockState(), 3)
+                        .add(net.notalan.nukaadditions.block.ModBlocks.ASPHALT_CENTER.get().defaultBlockState(), 3)
+                        .add(net.notalan.nukaadditions.block.ModBlocks.STEEL_PLATING.get().defaultBlockState(), 3)
+                        .add(net.notalan.nukaadditions.block.ModBlocks.STEEL_PANEL.get().defaultBlockState(), 3)
+                        .add(Blocks.COBBLESTONE.defaultBlockState(), 3)
+                        .add(Blocks.GRAY_CONCRETE.defaultBlockState(), 3)
+                        .add(Blocks.WHITE_CONCRETE.defaultBlockState(), 3)
+                        .add(Blocks.GREEN_CONCRETE.defaultBlockState(), 3)
+                        .add(Blocks.BRICKS.defaultBlockState(), 3)
+                        .add(Blocks.BRICK_STAIRS.defaultBlockState(), 3)
+                        .add(Blocks.BRICK_SLAB.defaultBlockState(), 3))),
+                BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.COARSE_DIRT))))));
         //endregion
     }
 

@@ -24,16 +24,18 @@ public class TestRegion1 extends Region {
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FOREST, ModBiomes.CRANBERRY_BOG);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.PLAINS, ModBiomes.POISON_VALLEY);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SUNFLOWER_PLAINS, ModBiomes.POISON_VALLEY);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.MANGROVE_SWAMP, ModBiomes.CRANBERRY_BOG);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FOREST, ModBiomes.POISON_VALLEY);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.TAIGA, ModBiomes.SAVAGE_DIVIDE);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SWAMP, ModBiomes.GLOW_SEA);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.BIRCH_FOREST, ModBiomes.ASH_HEAP);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.DESERT, ModBiomes.WASTED_DESERT);
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SAVANNA, ModBiomes.WASTED_DESERT);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SAVANNA_PLATEAU, ModBiomes.WASTED_DESERT);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.WINDSWEPT_SAVANNA, ModBiomes.WASTED_DESERT);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.PLAINS, ModBiomes.CITY_WASTES);
+
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.RIVER, ModBiomes.RADS_RIVER);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.OCEAN, ModBiomes.RADS_RIVER);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.LUKEWARM_OCEAN, ModBiomes.RADS_RIVER);
         });
     }
 }

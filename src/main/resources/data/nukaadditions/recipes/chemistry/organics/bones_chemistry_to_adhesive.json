@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:adhesive", "count": 2
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:wooden_chest"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:adhesive", "count": 1, "weight": 1},
+    { "item": "nukacraft:textile", "count": 1, "weight": 1},
+    { "item": "nukacraft:deadwood_planks", "count": 2,  "weight": 3}
+  ]
+}

@@ -2,6 +2,7 @@ package net.notalan.nukaadditions;
 
 import com.mojang.logging.LogUtils;
 import com.nukateam.nukacraft.common.foundation.blocks.blocks.RadioactiveBlock;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -22,11 +23,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.notalan.nukaadditions.block.ModBlocks;
+import net.notalan.nukaadditions.block.entity.ModBlockEntities;
 import net.notalan.nukaadditions.item.ModBannerPatterns;
 import net.notalan.nukaadditions.item.ModCreativeModeTabs;
 import net.notalan.nukaadditions.item.ModItems;
-import net.notalan.nukaadditions.worldgen.biome.TestRegion1;
-import net.notalan.nukaadditions.worldgen.biome.TestRegion2;
+import net.notalan.nukaadditions.recipe.ModRecipes;
+import net.notalan.nukaadditions.screen.ChemBenchScreen;
+import net.notalan.nukaadditions.screen.ModMenuTypes;
+import net.notalan.nukaadditions.screen.ScrapBenchScreen;
 import net.notalan.nukaadditions.worldgen.biome.surface.ModSurfaceRules;
 import net.notalan.nukaadditions.worldgen.biome.ModTerrablender;
 import org.slf4j.Logger;
@@ -52,8 +56,11 @@ public class NukaAdditionsMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBannerPatterns.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
-        ModTerrablender.registerBiomes();
+        //ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -70,6 +77,8 @@ public class NukaAdditionsMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(ModTerrablender::registerBiomes);
+
         event.enqueueWork(() ->
         {
             //Regions.register(new TestRegion1(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 2));
@@ -103,11 +112,11 @@ public class NukaAdditionsMod
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event)
     {
-        event.enqueueWork(() -> {
-            Block newBlock = new RadioactiveBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE).lightLevel((state) -> 5), 0.1f);
-
-            Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("nukacraft", "raw_uranium_block"), newBlock);
-        });
+//        event.enqueueWork(() -> {
+//            //Block newBlock = new RadioactiveBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE).lightLevel((state) -> 5), 0.1f);
+//
+//            //Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("nukacraft", "raw_uranium_block"), newBlock);
+//        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -117,7 +126,8 @@ public class NukaAdditionsMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            MenuScreens.register(ModMenuTypes.SCRAP_BENCH_MENU.get(), ScrapBenchScreen::new);
+            MenuScreens.register(ModMenuTypes.CHEM_BENCH_MENU.get(), ChemBenchScreen::new);
         }
     }
 }

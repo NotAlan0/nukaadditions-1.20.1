@@ -1,0 +1,16 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:vault_science_leggins"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:blue_dye", "count": 1, "weight": 1},
+    { "item": "minecraft:yellow_dye", "count": 1, "weight": 1},
+    { "item": "minecraft:white_dye", "count": 1, "weight": 1},
+    { "item": "nukacraft:antisept", "count": 1,  "weight": 1},
+    { "item": "minecraft:string", "count": 3, "weight": 2},
+    { "item": "nukacraft:textile", "count": 2,  "weight": 2}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:ash_stone"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:cobblestone", "count": 1, "weight": 1},
+    { "item": "nukacraft:ashdirt", "count": 2, "weight": 1},
+    { "item": "nukacraft:ashdust", "count": 3, "weight": 2}
+  ]
+}

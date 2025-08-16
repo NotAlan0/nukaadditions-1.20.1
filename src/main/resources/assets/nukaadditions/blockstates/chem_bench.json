@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "nukaadditions:block/chem_bench",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "nukaadditions:block/chem_bench",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "nukaadditions:block/chem_bench"
+    },
+    "facing=west": {
+      "model": "nukaadditions:block/chem_bench",
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:raiders_boots"
+    }
+  ],
+  "outputs": [
+    { "item": "minecraft:adhesive", "count": 1, "weight": 1},
+    { "item": "minecraft:screws", "count": 1, "weight": 1},
+    { "item": "minecraft:string", "count": 2, "weight": 2},
+    { "item": "nukacraft:scrap", "count": 2,  "weight": 2}
+  ]
+}

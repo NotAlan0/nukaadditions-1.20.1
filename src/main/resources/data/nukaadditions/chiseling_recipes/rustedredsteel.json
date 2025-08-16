@@ -1,0 +1,10 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "connecting_item": "nukaadditions:rusted_redsteel_connecting",
+      "item": "nukacraft:rustedredsteel"
+    }
+  ],
+  "overwrite": false
+}

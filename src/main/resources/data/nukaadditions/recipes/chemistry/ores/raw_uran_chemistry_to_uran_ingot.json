@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:raw_uranium"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:uranium_ingot", "count": 2
+  }
+}

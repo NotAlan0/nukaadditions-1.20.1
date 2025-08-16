@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_gold"
+    }
+  ],
+  "output": {
+    "item": "minecraft:gold_ingot", "count": 2
+  }
+}

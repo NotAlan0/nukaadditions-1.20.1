@@ -1,0 +1,14 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:trapper_leggins"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:screws", "count": 2, "weight": 1},
+    { "item": "nukacraft:leadplate", "count": 1, "weight": 1},
+    { "item": "nukacraft:scrap", "count": 2, "weight": 2},
+    { "item": "nukacraft:rubber", "count": 3,  "weight": 2}
+  ]
+}

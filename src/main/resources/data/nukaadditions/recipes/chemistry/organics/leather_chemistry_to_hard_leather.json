@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "minecraft:leather"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:leatherhard", "count": 1
+  }
+}

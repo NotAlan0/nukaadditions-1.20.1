@@ -1,0 +1,14 @@
+{
+  "type": "nukaadditions:scrapping",
+  "ingredients": [
+    {
+      "item": "nukacraft:scout_boots"
+    }
+  ],
+  "outputs": [
+    { "item": "nukacraft:composite", "count": 1, "weight": 1},
+    { "item": "nukacraft:threads", "count": 1, "weight": 1},
+    { "item": "nukacraft:screws", "count": 3, "weight": 2},
+    { "item": "nukacraft:plastic", "count": 2,  "weight": 2}
+  ]
+}

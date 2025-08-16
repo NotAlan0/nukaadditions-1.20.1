@@ -1,0 +1,11 @@
+{
+  "type": "nukaadditions:chemistry",
+  "ingredients": [
+    {
+      "item": "nukacraft:acid_bucket"
+    }
+  ],
+  "output": {
+    "item": "nukacraft:acid", "count": 4
+  }
+}
