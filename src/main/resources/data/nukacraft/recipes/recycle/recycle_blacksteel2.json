@@ -1,4 +1,5 @@
-{"type": "minecraft:smelting",
+{
+  "type": "minecraft:smelting",
   "experience": 2,
   "cookingtime": 140,
   "ingredient": {
@@ -6,5 +7,6 @@
   },
   "result": {
     "item": "nukacraft:steel",
-    "count": 2
-  }}
+    "count": 1
+  }
+}

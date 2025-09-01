@@ -1,10 +1,12 @@
-{"type": "minecraft:smelting",
-"experience": 2,
-"cookingtime": 140,
-"ingredient": {
-"item": "nukacraft:blacksteel"
-},
-"result": {
-"item": "nukacraft:steel",
-"count": 1
-}}
+{
+  "type": "minecraft:smelting",
+  "experience": 2,
+  "cookingtime": 140,
+  "ingredient": {
+    "item": "nukacraft:blacksteel"
+  },
+  "result": {
+    "item": "nukacraft:steel",
+    "count": 1
+  }
+}
